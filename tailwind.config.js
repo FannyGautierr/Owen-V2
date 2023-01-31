@@ -14,6 +14,14 @@ module.exports = {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
+            backgroundImage :{
+                "bgImg" : ["url('/Users/fannygautier/Desktop/repos/owen-v2/resources/img/background_star.png')"],
+                "bg-owen" : ["url('/Users/fannygautier/Desktop/repos/owen-v2/resources/img/owen.png')"],
+                "question" : ["url('/Users/fannygautier/Desktop/repos/owen-v2/resources/img/question.png')"]
+            },
+            backgroundColor :{
+                "bg" :["#1A1A1A"]
+            }
         },
     },
 
