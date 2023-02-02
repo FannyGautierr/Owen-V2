@@ -2,13 +2,20 @@
 import { Head, Link } from '@inertiajs/vue3';
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 import Question from "@/Components/Question.vue";
+import {useQuizStore} from "../../stores/QuizStore";
+import Reponse from "@/Components/Reponse.vue";
+
+const question = useQuizStore();
+const reponses = question.questions[0].reponse
 
 defineProps({
     canLogin: Boolean,
     canRegister: Boolean,
     laravelVersion: String,
     phpVersion: String,
+    start : Boolean,
 });
+
 </script>
 
 <template >
@@ -38,16 +45,22 @@ defineProps({
 
         </div>
         <div class="flex flex-row justify-between items-center mt-30">
-            <div class="bg-bg-owen bg-contain bg-bottom h-80 w-1/2 bg-no-repeat p-1"></div>
+            <div class="bg-bg-owen bg-contain bg-bottom h-80 w-1/2 bg-no-repeat p-1 animate-bounce-slow"></div>
             <Question
-                question = "hey"
+                :question = question.questions[0].question
             />
 
         </div>
-        <div class="flex justify-center items-center">
-            <SecondaryButton class="ml-4" >
+        <div class="flex justify-center items-center" v-if="!start">
+            <div class="ml-4 bg-white" @click="start = true ">
                 Commencer
-            </SecondaryButton>
+            </div>
+        </div>
+        <div class="flex justify-center items-center" v-else>
+            <Reponse  v-for="(reponse,index) in reponses "
+                     :reponse = reponse
+                      :key="index"
+            />
         </div>
     </div>
 </template>

@@ -13,14 +13,20 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                "bit" : ['Bit8',"BIT8"]
             },
             backgroundImage :{
                 "bgImg" : ["url('/Users/fannygautier/Desktop/repos/owen-v2/resources/img/background_star.png')"],
                 "bg-owen" : ["url('/Users/fannygautier/Desktop/repos/owen-v2/resources/img/owen.png')"],
-                "question" : ["url('/Users/fannygautier/Desktop/repos/owen-v2/resources/img/question.png')"]
+                "question" : ["url('/Users/fannygautier/Desktop/repos/owen-v2/resources/img/question.png')"],
+                "reponse" : ["url('/Users/fannygautier/Desktop/repos/owen-v2/resources/img/reponse.png')"],
+
             },
             backgroundColor :{
                 "bg" :["#1A1A1A"]
+            },
+            animation:{
+                'bounce-slow': 'bounce 2s ease-in-out infinite',
             }
         },
     },
