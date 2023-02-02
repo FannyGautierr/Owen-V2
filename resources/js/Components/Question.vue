@@ -6,6 +6,9 @@ defineProps({
     question:String
 
 })
+
+
+
 </script>
 
 <template>

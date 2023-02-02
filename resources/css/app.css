@@ -5,7 +5,7 @@
 
 @font-face {
     font-family: "8BIT";
-    src: url('fonts/8-BIT\ WONDER.TTF');
+    src: url('../fonts/8-BIT\ WONDER.TTF');
 }
 html{
     font-family: "8BIT";

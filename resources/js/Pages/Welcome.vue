@@ -5,8 +5,8 @@ import Question from "@/Components/Question.vue";
 import {useQuizStore} from "../../stores/QuizStore";
 import Reponse from "@/Components/Reponse.vue";
 
-const question = useQuizStore();
-const reponses = question.questions[0].reponse
+const quiz = useQuizStore();
+//let reponses = quiz.questions[quiz.turn].reponse
 
 defineProps({
     canLogin: Boolean,
@@ -46,8 +46,11 @@ defineProps({
         </div>
         <div class="flex flex-row justify-between items-center mt-30">
             <div class="bg-bg-owen bg-contain bg-bottom h-80 w-1/2 bg-no-repeat p-1 animate-bounce-slow"></div>
-            <Question
-                :question = question.questions[0].question
+            <Question v-if="quiz.turn < quiz.questions.length"
+                :question = quiz.questions[quiz.turn].question
+            />
+            <Question v-else
+                      question = "Je crois avoir trouver la bonne musique pour vous !"
             />
 
         </div>
@@ -57,7 +60,7 @@ defineProps({
             </div>
         </div>
         <div class="flex justify-center items-center" v-else>
-            <Reponse  v-for="(reponse,index) in reponses "
+            <Reponse  v-for="(reponse,index) in quiz.questions[quiz.turn].reponse "
                      :reponse = reponse
                       :key="index"
             />

@@ -9,14 +9,14 @@ defineProps({
     key : Number
 
 })
-const setAnswer = (reponse) => {
+/*const setAnswer = (reponse) => {
     quiz.adjective.push(reponse)
-}
+}*/
 </script>
 
 <template>
 
-    <button @click="setAnswer(reponse)" class="bg-reponse bg-contain h-80 w-1/2 bg-no-repeat bg-center text-white flex items-center justify-center">{{reponse}}</button>
+    <button @click="quiz.setAnswer(reponse)" class="bg-reponse bg-contain h-80 w-1/2 bg-no-repeat bg-center text-white flex items-center justify-center text-2xl text-green-500">{{reponse}}</button>
 
 </template>
 
