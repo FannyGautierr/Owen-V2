@@ -25,6 +25,9 @@ module.exports = {
             backgroundColor :{
                 "bg" :["#1A1A1A"]
             },
+            margin:{
+              "center": "0 auto"
+            },
             animation:{
                 'bounce-slow': 'bounce 2s ease-in-out infinite',
             }

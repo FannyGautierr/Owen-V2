@@ -77,8 +77,18 @@ defineProps({
 
 
         </div>
-        <div v-if="quiz.finish" @click="quiz.endQuiz()">
-            see a song for you !
+        <div v-if="quiz.finish && !quiz.comparedFinish" @click='quiz.endQuiz()' class="text-white bg-[#232323] w-1/2 p-2 m-center text-center shadow-inner hover:border hover:border-violet-600">
+            See a song for you !
         </div>
+
+        <div v-if="quiz.comparedFinish">
+            <!-- TO DO -->
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/a9zPVsdeIaM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                    class="iframe m-center">
+
+            </iframe>
+
+        </div>
+
     </div>
 </template>
