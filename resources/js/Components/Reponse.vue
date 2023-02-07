@@ -9,9 +9,7 @@ defineProps({
     key : Number
 
 })
-/*const setAnswer = (reponse) => {
-    quiz.adjective.push(reponse)
-}*/
+
 </script>
 
 <template>

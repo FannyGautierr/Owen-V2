@@ -1,4 +1,6 @@
 import { defineStore } from "pinia";
+import axios from "axios";
+import {forEach} from "lodash";
 
 export const useQuizStore = defineStore("QuizStore" , {
     state: () => ({
@@ -31,20 +33,57 @@ export const useQuizStore = defineStore("QuizStore" , {
             ],
             adjective : [],
             turn : 0,
-            finish:false,
+            finish : false,
+            musics : []
 
 
     }),
     actions: {
         setAnswer(reponse){
-            this.adjective.push(reponse)
-            this.turn++
-        },
-        endQuiz(finish){
-            if(finish){
-                /* TODO */
-                /* -> Faire un appel dans la BD / comparer les arrays*/
+            if(this.turn<5){
+                this.adjective.push(reponse);
+                this.turn++ ;
+            }else {
+                this.finish =true;
             }
+
+        },
+        endQuiz(){
+            console.log("heyyyyyy")
+            axios.get("/music")
+                .then(response=>{
+                    response.data.forEach((item,index)=>{
+                        this.getAdjectives(item)
+                    })
+
+                    console.log(this.musics)
+                })
+
+
+        },
+        getAdjectives(song){
+            console.log(song)
+            let description=[]
+            let music={
+                "name":"",
+                "artist":"",
+                description :[],
+            }
+
+            let artist = song.artist
+            description.push(song.firstQuestion)
+            description.push(song.secondQuestion)
+            description.push(song.thirdQuestion)
+            description.push(song.fourthQuestion)
+            description.push(song.fiveQuestion)
+            console.log(description)
+            music.name=song.name
+            music.artist=song.artist
+            music.description=description
+
+            this.musics.push(music)
+
+
         }
     },
     getters: () => {

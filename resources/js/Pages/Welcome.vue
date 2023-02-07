@@ -14,6 +14,8 @@ defineProps({
     laravelVersion: String,
     phpVersion: String,
     start : Boolean,
+    finish : Boolean
+
 });
 
 </script>
@@ -44,26 +46,39 @@ defineProps({
             </div>
 
         </div>
+
         <div class="flex flex-row justify-between items-center mt-30">
             <div class="bg-bg-owen bg-contain bg-bottom h-80 w-1/2 bg-no-repeat p-1 animate-bounce-slow"></div>
+
             <Question v-if="quiz.turn < quiz.questions.length"
                 :question = quiz.questions[quiz.turn].question
             />
+
             <Question v-else
                       question = "Je crois avoir trouver la bonne musique pour vous !"
             />
 
         </div>
         <div class="flex justify-center items-center" v-if="!start">
-            <div class="ml-4 bg-white" @click="start = true ">
+
+            <div class="ml-4 bg-white" @click="start = true">
                 Commencer
             </div>
+
         </div>
-        <div class="flex justify-center items-center" v-else>
-            <Reponse  v-for="(reponse,index) in quiz.questions[quiz.turn].reponse "
-                     :reponse = reponse
+        <div class="flex justify-center items-center" v-if="!quiz.finish && start">
+
+            <Reponse
+
+                v-for="(reponse,index) in quiz.questions[quiz.turn].reponse "
+                      :reponse = reponse
                       :key="index"
             />
+
+
+        </div>
+        <div v-if="quiz.finish" @click="quiz.endQuiz()">
+            see a song for you !
         </div>
     </div>
 </template>

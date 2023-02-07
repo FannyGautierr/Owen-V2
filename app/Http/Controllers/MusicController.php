@@ -15,7 +15,7 @@ class MusicController extends Controller
      */
     public function index()
     {
-        //
+        return Music::all();
     }
 
     /**
@@ -47,7 +47,7 @@ class MusicController extends Controller
      */
     public function show(Music $music)
     {
-        //
+
     }
 
     /**
