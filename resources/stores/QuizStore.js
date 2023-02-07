@@ -34,7 +34,8 @@ export const useQuizStore = defineStore("QuizStore" , {
             adjective : [],
             turn : 0,
             finish : false,
-            musics : []
+            musics : [],
+            selectedSongs : []
 
 
     }),
@@ -49,17 +50,14 @@ export const useQuizStore = defineStore("QuizStore" , {
 
         },
         endQuiz(){
-            console.log("heyyyyyy")
             axios.get("/music")
                 .then(response=>{
                     response.data.forEach((item,index)=>{
                         this.getAdjectives(item)
                     })
+                    this.compareArray(this.musics);
 
-                    console.log(this.musics)
                 })
-
-
         },
         getAdjectives(song){
             console.log(song)
@@ -84,7 +82,26 @@ export const useQuizStore = defineStore("QuizStore" , {
             this.musics.push(music)
 
 
+        },
+        compareArray(musics){
+            let countCheck = 0
+            musics.forEach((item)=>{
+                for (let i = 0; i<item.description.length; i++){
+                    if(item.description[i]===this.adjective[i]){
+                        console.log(item.description[i],this.adjective[i])
+                        countCheck++
+                    }
+                }
+                if (countCheck>3){
+                    this.selectedSongs.push(item)
+                    console.log(this.selectedSongs)
+                }else {
+                    console.log("nope")
+                }
+
+            })
         }
+
     },
     getters: () => {
 
