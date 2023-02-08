@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TokenController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -30,7 +31,11 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/music',[MusicController::class,"index"]);
+Route::middleware('cors')->group(function(){
+    Route::get('/music',[MusicController::class,"index"]);
+    Route::get('/userToken',[TokenController::class,"getToken"]);
+
+});
 
 
 Route::get('/dashboard', function () {

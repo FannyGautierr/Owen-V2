@@ -4,8 +4,10 @@ import SecondaryButton from "@/Components/SecondaryButton.vue";
 import Question from "@/Components/Question.vue";
 import {useQuizStore} from "../../stores/QuizStore";
 import Reponse from "@/Components/Reponse.vue";
+import {useSpotifyStore} from "../../stores/SpotifyStore";
 
 const quiz = useQuizStore();
+const spotify = useSpotifyStore()
 //let reponses = quiz.questions[quiz.turn].reponse
 
 defineProps({
@@ -85,8 +87,8 @@ defineProps({
             <!-- TO DO -->
             <iframe width="560" height="315" src="https://www.youtube.com/embed/a9zPVsdeIaM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
                     class="iframe m-center">
-
             </iframe>
+            <h2 class="text-white text-center text-2xl">{{quiz.selectedSongs[0].name}}</h2>
 
         </div>
 

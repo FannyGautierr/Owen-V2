@@ -21,6 +21,7 @@
         "@vitejs/plugin-vue": "^4.0.0",
         "firebase": "^9.16.0",
         "pinia": "^2.0.30",
+        "spotify-web-api-js": "^1.5.2",
         "vue": "^3.2.36",
         "vue-loader": "^17.0.1"
     }

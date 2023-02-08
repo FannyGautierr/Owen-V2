@@ -1,8 +1,12 @@
 import { defineStore } from "pinia";
 import axios from "axios";
-import {forEach} from "lodash";
+import {useSpotifyStore} from "./SpotifyStore";
+
+
+
 
 export const useQuizStore = defineStore("QuizStore" , {
+
     state: () => ({
 
             questions:[
@@ -100,7 +104,12 @@ export const useQuizStore = defineStore("QuizStore" , {
                 }
 
             })
+            const spotifyStore = useSpotifyStore();
+            spotifyStore.music.push(this.selectedSongs[0])
+            spotifyStore.getToken();
             this.comparedFinish=true;
+
+
         }
 
     },
