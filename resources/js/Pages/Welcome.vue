@@ -84,12 +84,9 @@ defineProps({
         </div>
 
         <div v-if="quiz.comparedFinish">
-            <!-- TO DO -->
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/a9zPVsdeIaM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
-                    class="iframe m-center">
-            </iframe>
-            <h2 class="text-white text-center text-2xl">{{quiz.selectedSongs[0].name}}</h2>
-
+            <h2 class="text-white text-center text-2xl">{{spotify.spotifySong[0].name}} - {{spotify.spotifySong[0].artists[0].name}}</h2>
+            <iframe style="border-radius:12px" :src="'https://open.spotify.com/embed/track/'+spotify.spotifySong[0].id +'?utm_source=generator&theme=0'" width="50%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" class="m-center my-10"></iframe>
+            <button>Add to my playlist</button>
         </div>
 
     </div>

@@ -9,7 +9,7 @@ export const useSpotifyStore = defineStore("SpotifyStore" , {
     state: () => ({
         music:[],
         accessToken : "",
-        spotifySong : [],
+        spotifySong:[]
 
     }),
     actions: {
@@ -28,15 +28,20 @@ export const useSpotifyStore = defineStore("SpotifyStore" , {
 
         },
         getSong(){
-            s.searchTracks(this.music[1].name).then(
-                function (data) {
+            s.searchTracks(this.music[0].name).then(
+                data=> {
                     console.log('Search tracks by ', data);
-                    this.spotifySong.push(data.tracks.items[0])
+                    this.setSong(data)
                 },
                 function (err) {
                     console.error(err);
                 }
             );
+
+
+        },
+        setSong(data){
+            this.spotifySong.push(data.tracks.items[0])
         }
     },
     getters: () => {
